@@ -1,7 +1,8 @@
-import { Alegreya } from "next/font/google";
-import "./globals.css";
+import { Alegreya } from "next/font/google"
+import "./globals.css"
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-const alegreya = Alegreya({ subsets: ["latin"] });
+const alegreya = Alegreya({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Create Next App",
