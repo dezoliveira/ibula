@@ -9,7 +9,7 @@ import Link from 'next/link';
 export default function TopNavbar() {
   return (
     <>
-      <Navbar bg="success" data-bs-theme="dark">
+      <Navbar bg="success" data-bs-theme="dark" fixed={true}>
         <Container>
           <Navbar.Brand>
             <Link href="/" className='link'>

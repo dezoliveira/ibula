@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={nunito.className}>
+      <body className={nunito.className} suppressHydrationWarning={true}>
         <TopNavbar />
         {children}
       </body>
