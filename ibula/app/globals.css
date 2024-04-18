@@ -14,3 +14,7 @@ main {
   text-decoration: none;
   color: inherit
 }
+
+.full-wrapper {
+  height: 100vh;
+}

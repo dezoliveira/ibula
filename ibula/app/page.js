@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { Container, Card, Button, Col, Row, Form } from "react-bootstrap";
+import NotFound from "./components/NotFound";
 
 export default function Home() {
   
   const [medicines, setMedicines] = useState([])
   const [searchMedicine, setSearchMedicine] = useState("")
+  const [filteredMedicines, setFilteredMedicine] = useState(medicines)
 
   useEffect(() => {
     getMedicines()
@@ -23,10 +25,26 @@ export default function Home() {
       
       const data = await response.json()
       setMedicines(data)
+      setFilteredMedicine(data)
     } catch (error) {
       console.error("Error:", error);
     }
-  }  
+  }
+
+  const handleInputChange = (e) => {
+    const searchMedicine = e.target.value
+    setSearchMedicine(searchMedicine)
+
+    const filteredItems = medicines.filter((medicine) => {
+      for(let i in medicines) {
+        return medicine.name.toLowerCase().includes(searchMedicine.toLowerCase())
+      }
+    })
+
+    console.log(filteredItems)
+
+    setFilteredMedicine(filteredItems)
+  }
 
   return (
     <main>
@@ -40,14 +58,17 @@ export default function Home() {
                 className="me-2"
                 aria-label="Bula"
                 value={searchMedicine}
-                onChange={(e) => setSearchMedicine(e.target.value)}
+                onChange={handleInputChange}
               />
               <Button variant="outline-success">Pesquisar</Button>
             </Form>
           </Col>
+          {/* <ul>
+            {filteredMedicines.map(medicine => <li key={medicine.id}>{medicine.name}</li>)}
+          </ul> */}
         </Row>
         <Row>
-          {medicines && medicines.map((medicine) => (
+          {filteredMedicines && filteredMedicines.map((medicine) => (
             <Col lg={6} md={6} sm={12}>
               <Card
                 id={medicine.id}
@@ -61,11 +82,16 @@ export default function Home() {
                   <Card.Text>
                     {medicine.company}
                   </Card.Text>
-                  <Button variant="danger">Baixar Bula</Button>
+                  <Button variant="danger">Visualizar</Button>
                 </Card.Body>
               </Card>
             </Col>
           ))}
+          <Col>
+          {!filteredMedicines.length && 
+            <NotFound />
+          }
+          </Col>
         </Row>
       </Container>
     </main>
