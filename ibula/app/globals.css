@@ -1,3 +1,7 @@
+main {
+  background-color:aliceblue;
+}
+
 .logo {
   display: flex;
   align-items: center;
