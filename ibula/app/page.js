@@ -60,21 +60,18 @@ export default function Home() {
                 value={searchMedicine}
                 onChange={handleInputChange}
               />
-              <Button variant="outline-success">Pesquisar</Button>
+              <Button variant="success">Pesquisar</Button>
             </Form>
           </Col>
-          {/* <ul>
-            {filteredMedicines.map(medicine => <li key={medicine.id}>{medicine.name}</li>)}
-          </ul> */}
         </Row>
         <Row>
           {filteredMedicines && filteredMedicines.map((medicine) => (
             <Col lg={6} md={6} sm={12}>
               <Card
                 id={medicine.id}
-                className="m-4 d-flex flex-column gap-4" style={{ minHeight: '300px' }}>
+                className="m-4 d-flex flex-column gap-4 justify-content-between" style={{ minHeight: '250px', maxHeight: '250px' }}>
                 {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-                <Card.Body>
+                <Card.Body className="d-flex flex-column justify-content-between">
                   <Card.Title>{medicine.name}</Card.Title>
                   <Card.Text>
                     {medicine.published_at}
@@ -82,14 +79,16 @@ export default function Home() {
                   <Card.Text>
                     {medicine.company}
                   </Card.Text>
-                  <Button variant="danger">Visualizar</Button>
+                  <div>
+                    <Button variant="danger">Visualizar</Button>
+                  </div>
                 </Card.Body>
               </Card>
             </Col>
           ))}
           <Col>
           {!filteredMedicines.length && 
-            <NotFound />
+            <NotFound text="Ops! Medicamento não encontrado!"/>
           }
           </Col>
         </Row>
