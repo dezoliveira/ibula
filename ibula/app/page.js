@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Container, Card, Button, Col, Row, Form } from "react-bootstrap";
 import NotFound from "./components/NotFound";
 import MainPagination from "./components/Pagination";
+import Link from "next/link";
 
 export default function Home() {
   
@@ -81,23 +82,25 @@ export default function Home() {
         <Row>
           {currentItems && currentItems.map((medicine) => (
             <Col lg={6} md={6} sm={12}>
-              <Card
-                id={medicine.id}
-                className="m-4 d-flex flex-column gap-4 justify-content-between" style={{ minHeight: '250px', maxHeight: '250px' }}>
-                {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-                <Card.Body className="d-flex flex-column justify-content-between">
-                  <Card.Title>{medicine.name}</Card.Title>
-                  <Card.Text>
-                    {medicine.published_at}
-                  </Card.Text>
-                  <Card.Text>
-                    {medicine.company}
-                  </Card.Text>
-                  <div>
-                    <Button variant="danger">Visualizar</Button>
-                  </div>
-                </Card.Body>
-              </Card>
+              <Link href={`/medicines/${medicine.id}`} className={"text-decoration-none "}>
+                <Card
+                  id={medicine.id}
+                  className="m-4 d-flex flex-column gap-4 justify-content-between" style={{ minHeight: '250px', maxHeight: '250px' }}>
+                  {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                  <Card.Body className="d-flex flex-column justify-content-between">
+                    <Card.Title>{medicine.name}</Card.Title>
+                    <Card.Text>
+                      {medicine.published_at}
+                    </Card.Text>
+                    <Card.Text>
+                      {medicine.company}
+                    </Card.Text>
+                    <div>
+                      <Button variant="danger">Ver Mais</Button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Link>
             </Col>
           ))}
           <Col>
