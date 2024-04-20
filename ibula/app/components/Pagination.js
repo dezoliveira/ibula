@@ -5,6 +5,15 @@ export default function MainPagination({currentPage, totalPages, onPageChange}) 
     if (page !== currentPage) {
       onPageChange(page)
     }
+
+    scroolToTop()
+  }
+
+  const scroolToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
   }
 
   return (
