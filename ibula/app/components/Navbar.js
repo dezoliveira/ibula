@@ -19,16 +19,10 @@ export default function TopNavbar() {
               </Nav>
             </Link>
           </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link>
-              <Link href="/" className='link'>Home</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link href="/" className='link'>List</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link href="/" className='link'>Create</Link>
-            </Nav.Link>
+          <Nav className="d-flex me-auto gap-2">
+            <Link href="/" className='link'>Home</Link>
+            <Link href="/" className='link'>List</Link>
+            <Link href="/" className='link'>Create</Link>
           </Nav>
         </Container>
       </Navbar>

@@ -3,12 +3,26 @@
 import { useEffect, useState } from "react";
 import { Container, Card, Button, Col, Row, Form } from "react-bootstrap";
 import NotFound from "./components/NotFound";
+import MainPagination from "./components/Pagination";
 
 export default function Home() {
   
   const [medicines, setMedicines] = useState([])
   const [searchMedicine, setSearchMedicine] = useState("")
   const [filteredMedicines, setFilteredMedicine] = useState(medicines)
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 10
+
+  const totalItems = filteredMedicines.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredMedicines.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
     getMedicines()
@@ -65,7 +79,7 @@ export default function Home() {
           </Col>
         </Row>
         <Row>
-          {filteredMedicines && filteredMedicines.map((medicine) => (
+          {currentItems && currentItems.map((medicine) => (
             <Col lg={6} md={6} sm={12}>
               <Card
                 id={medicine.id}
@@ -90,6 +104,15 @@ export default function Home() {
           {!filteredMedicines.length && 
             <NotFound text="Ops! Medicamento não encontrado!"/>
           }
+          </Col>
+        </Row>
+        <Row className="p-4">
+          <Col lg={12} md={12} sm={12}>
+            <MainPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </Col>
         </Row>
       </Container>

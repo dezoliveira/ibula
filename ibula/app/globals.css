@@ -1,5 +1,5 @@
 main {
-  background-color:aliceblue;
+  background-color:#dee2e6;
 }
 
 .logo {
@@ -7,14 +7,30 @@ main {
   align-items: center;
   justify-content: space-between;
   color: red;
-  font-size: 23px;
+  font-size: 25px;
 }
 
-.link {
+
+
+nav a {
   text-decoration: none;
-  color: inherit
+  color: aliceblue;
+}
+
+nav a:hover {
+  color: #dc3545;
 }
 
 .full-wrapper {
   height: 100vh;
+}
+
+li.page-item .page-link {
+  color: #198754;
+}
+
+li.page-item.active .page-link{
+  background-color: #198754;
+  border: #198754;
+  color: white;
 }
