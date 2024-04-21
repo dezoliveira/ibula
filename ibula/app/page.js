@@ -81,9 +81,10 @@ export default function Home() {
         </Row>
         <Row>
           {currentItems && currentItems.map((medicine) => (
-            <Col lg={6} md={6} sm={12}>
+            <Col lg={6} md={6} sm={12} key={medicine.id}>
               <Link href={`/medicines/${medicine.id}`} className={"text-decoration-none "}>
                 <Card
+                  key={medicine.id}
                   id={medicine.id}
                   className="m-4 d-flex flex-column gap-4 justify-content-between" style={{ minHeight: '250px', maxHeight: '250px' }}>
                   {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
