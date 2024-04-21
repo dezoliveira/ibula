@@ -1,19 +1,23 @@
 'use client'
 
+import Link from "next/link"
 //Font Awesome
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
-// import { faUserDoctor } from '@fortawesome/free-solid-svg-icons'
-// import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
+import { faUserDoctor } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 // hooks
 import { useEffect, useRef, useState } from "react"
 
 // bootsrap
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function Medicine({ params }) {
   const [medicine, setMedicine] = useState([])
+  const [isShowPDF, setIsShowPDF] = useState(false)
+  const [showViewer, setShowViewer] = useState(false)
+  const [showDownload, setShowDownload] = useState(false)
 
   useEffect(() => {
     getMedicine()
@@ -36,10 +40,28 @@ export default function Medicine({ params }) {
     }
   }
 
+  const handleShowPDF = (e) => {
+    e.preventDefault()
+
+    setIsShowPDF(true)
+    
+    let label = e.target.name
+
+    if (label === 'download') {
+      setShowDownload(true)
+      setShowViewer(false)
+    }
+
+    if (label === 'viewer') {
+      setShowViewer(true)
+      setShowDownload(false)
+    }
+  }
+
   return (
-    <Container className="p-4">
+    <Container className="d-flex align-items-center justify-content-center p-4">
       <Row>
-        <Col lg={6}>
+        <Col lg={12}>
           <Card
             id={medicine.id}
             className="m-4 d-flex flex-column gap-4 justify-content-between"
@@ -54,8 +76,62 @@ export default function Medicine({ params }) {
               <Card.Text>
                 {medicine.company}
               </Card.Text>
+              <div className="d-flex gap-2">
+                <Button
+                  variant="success"
+                  onClick={(e) => handleShowPDF(e)}
+                  name="download"
+                >
+                  Baixar
+                </Button>
+                <Button
+                  variant="info"
+                  className="text-white"
+                  onClick={(e) => handleShowPDF(e)}
+                  name="viewer"
+                >
+                  Visualizar
+                </Button>
+              </div>
             </Card.Body>
           </Card>
+          {isShowPDF && (
+            <Card>
+              <Card.Header>
+                {(showDownload ? 'Baixar' : 'Visualizar') + ' Bula'}
+              </Card.Header>
+              <Card.Body>
+                {showDownload && (
+                  <div className="d-flex align-items-center gap-4">
+                    <div className="d-flex gap-2">
+                      Médico:
+                      <a href="" download={medicine.documents ? medicine.documents[0].url : ''}>
+                        <FontAwesomeIcon fontSize={24} color="red" icon={faFilePdf} />
+                      </a>
+                    </div>
+                    <div className="d-flex gap-2">
+                      Paciente:
+                      <a href="" download={medicine.documents ? medicine.documents[1].url : ''}>
+                        <FontAwesomeIcon fontSize={24} color="green" icon={faFilePdf} />
+                      </a>
+                    </div>
+                  </div>
+                )}
+                {showViewer && (
+                  <div className="d-flex align-items-center gap-4">
+                    <div className="d-flex gap-2">
+                      Médico:
+                      <Link href={medicine.documents ? medicine.documents[0].url : ''}>Link</Link>
+                    </div>
+                    <Card.Text className="d-flex gap-2">
+                      Paciente:
+                      <Link href={medicine.documents ? medicine.documents[1].url : ''}>Link</Link>
+                    </Card.Text>
+                  </div>
+                )}
+              </Card.Body>
+            </Card>
+          )}
         </Col>
       </Row>
     </Container>
