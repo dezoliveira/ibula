@@ -72,9 +72,8 @@ export default function Medicine({ params }) {
         <Col lg={6} md={6} sd={6}>
           <Card
             id={medicine.id}
-            className="card m-4 gap-4"
+            className="medicine-card m-4 gap-4"
           >
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Header className="d-flex gap-2 align-items-center text-bg-primary">
               <FontAwesomeIcon icon={faPills} />
               <Card.Title className="m-0">{medicine.name}</Card.Title>

@@ -33,7 +33,7 @@ li.page-item.active .page-link{
   color: white;
 }
 
-.card {
+.medicine-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
