@@ -1,10 +1,16 @@
-import Link from "next/link"
-
-// hooks
-import { useEffect, useRef, useState } from "react"
-
 // bootsrap
 import { Button, Card, Col, Container, Row, Form } from "react-bootstrap"
+
+// font awesoe
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClock, faIndustry, faFlask } from '@fortawesome/free-solid-svg-icons'
+
+// next
+import Link from "next/link"
+
+// react hooks
+import { useEffect, useRef, useState } from "react"
+
 
 // components
 import Loading from "@/app/components/elements/Loading"
@@ -64,6 +70,14 @@ export default function MedicineList() {
     setFilteredMedicine(filteredItems)
   }
 
+  const formatDATA = (date) => {
+    if (date) {
+      const newDate = new Date(date).toLocaleDateString()
+      const newTime = new Date(date).toLocaleTimeString()
+      return `Criado em ${newDate} ás ${newTime}`
+    }
+  }
+
   return (
     <main>
       <Container className="p-4">
@@ -89,20 +103,30 @@ export default function MedicineList() {
                 <Card
                   key={medicine.id}
                   id={medicine.id}
-                  className="m-4 d-flex flex-column gap-4 justify-content-between" style={{ minHeight: '250px', maxHeight: '250px' }}>
+                  className="card m-4 gap-4">
+                  <Card.Header className="text-bg-primary">
+                    <Card.Title className="m-0">{medicine.name}</Card.Title>
+                  </Card.Header>
                   <Card.Body className="d-flex flex-column justify-content-between">
-                    <Card.Title>{medicine.name}</Card.Title>
-                    <Card.Text>
-                      {medicine.published_at}
+                    <Card.Text className="d-flex align-items-center gap-1">
+                      <FontAwesomeIcon fontSize={16} icon={faClock} />
+                      {formatDATA(medicine.published_at)}
                     </Card.Text>
-                    <Card.Text>
+                    <Card.Text className="d-flex align-items-center gap-1">
+                      <FontAwesomeIcon icon={faIndustry} />
                       {medicine.company}
                     </Card.Text>
-                    <Card.Text>
-                      {medicine.active_principles[0].name}
-                    </Card.Text>
                     <div>
-                      <Button variant="danger">Ver Mais</Button>
+                      <Card.Subtitle>
+                        <strong>Princípio Ativo:</strong>
+                      </Card.Subtitle>
+                      <Card.Text className="d-flex align-items-center gap-1">
+                        <FontAwesomeIcon icon={faFlask} />
+                        {medicine.active_principles[0].name}
+                      </Card.Text>
+                    </div>
+                    <div className="py-2">
+                      <Button variant="success">Ver Mais</Button>
                     </div>
                   </Card.Body>
                 </Card>

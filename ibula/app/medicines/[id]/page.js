@@ -1,15 +1,17 @@
 'use client'
 
-import Link from "next/link"
-//Font Awesome
-import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
-
-// hooks
-import { useEffect, useRef, useState } from "react"
+// Font Awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClock, faIndustry, faFlask, faFilePdf } from '@fortawesome/free-solid-svg-icons'
 
 // bootsrap
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+// react hooks
+import { useEffect, useState } from "react"
+
+// next
+import Link from "next/link"
 
 export default function Medicine({ params }) {
   const [medicine, setMedicine] = useState([])
@@ -56,28 +58,45 @@ export default function Medicine({ params }) {
     }
   }
 
+  const formatDATA = (date) => {
+    if (date) {
+      const newDate = new Date(date).toLocaleDateString()
+      const newTime = new Date(date).toLocaleTimeString()
+      return `Criado em ${newDate} ás ${newTime}`
+    }
+  }
+
   return (
     <Container className="p-4">
       <Row className="d-flex align-items-center justify-content-center ">
         <Col lg={6} md={6} sd={6}>
           <Card
             id={medicine.id}
-            className="m-4 d-flex flex-column gap-4 justify-content-between"
-            style={{ minHeight: '250px', maxHeight: '250px' }}
+            className="card m-4 gap-4"
           >
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+            <Card.Header className="text-bg-primary">
+              <Card.Title className="m-0">{medicine.name}</Card.Title>
+            </Card.Header>
             <Card.Body className="d-flex flex-column justify-content-between">
-              <Card.Title>{medicine.name}</Card.Title>
-              <Card.Text>
-                {medicine.published_at}
+              <Card.Text className="d-flex align-items-center gap-1">
+                <FontAwesomeIcon fontSize={16} icon={faClock} />
+                {formatDATA(medicine.published_at)}
               </Card.Text>
-              <Card.Text>
+              <Card.Text className="d-flex align-items-center gap-1">
+                <FontAwesomeIcon icon={faIndustry} />
                 {medicine.company}
               </Card.Text>
-              <Card.Text>
-                {medicine.active_principles[0].name}
-              </Card.Text>
-              <div className="d-flex gap-2">
+              <div>
+                <Card.Subtitle>
+                  <strong>Princípio Ativo:</strong>
+                </Card.Subtitle>
+                <Card.Text className="d-flex align-items-center gap-1">
+                  <FontAwesomeIcon icon={faFlask} />
+                  {medicine.active_principles ? medicine.active_principles[0].name : ''}
+                </Card.Text>
+              </div>
+              <div className="py-2 d-flex gap-2">
                 <Button
                   variant="success"
                   onClick={(e) => handleShowPDF(e)}
@@ -98,7 +117,7 @@ export default function Medicine({ params }) {
           </Card>
           {isShowPDF && (
             <Card>
-              <Card.Header>
+              <Card.Header className="text-bg-success">
                 <Card.Title className="m-0">
                   {(showDownload ? 'Baixar' : 'Visualizar') + ' Bula'}
                 </Card.Title>

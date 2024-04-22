@@ -21,7 +21,7 @@ export default function TopNavbar() {
           </Navbar.Brand>
           <Nav className="d-flex me-auto gap-2">
             <Link href="/" className='link'>Home</Link>
-            <Link href="/" className='link'>List</Link>
+            <label className='text-white'>/</label>
             <Link href="/" className='link'>About</Link>
           </Nav>
         </Container>

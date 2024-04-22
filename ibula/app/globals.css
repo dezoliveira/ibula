@@ -32,3 +32,11 @@ li.page-item.active .page-link{
   border: #198754;
   color: white;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 350px;
+  max-height: 350px;
+}
