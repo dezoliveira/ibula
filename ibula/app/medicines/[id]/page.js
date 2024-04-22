@@ -57,9 +57,9 @@ export default function Medicine({ params }) {
   }
 
   return (
-    <Container className="d-flex align-items-center justify-content-center p-4">
-      <Row>
-        <Col lg={12}>
+    <Container className="p-4">
+      <Row className="d-flex align-items-center justify-content-center ">
+        <Col lg={6} md={6} sd={6}>
           <Card
             id={medicine.id}
             className="m-4 d-flex flex-column gap-4 justify-content-between"
@@ -73,6 +73,9 @@ export default function Medicine({ params }) {
               </Card.Text>
               <Card.Text>
                 {medicine.company}
+              </Card.Text>
+              <Card.Text>
+                {medicine.active_principles[0].name}
               </Card.Text>
               <div className="d-flex gap-2">
                 <Button
@@ -96,7 +99,9 @@ export default function Medicine({ params }) {
           {isShowPDF && (
             <Card>
               <Card.Header>
-                {(showDownload ? 'Baixar' : 'Visualizar') + ' Bula'}
+                <Card.Title className="m-0">
+                  {(showDownload ? 'Baixar' : 'Visualizar') + ' Bula'}
+                </Card.Title>
               </Card.Header>
               <Card.Body>
                 {showDownload && (

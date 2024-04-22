@@ -69,7 +69,7 @@ export default function MedicineList() {
       <Container className="p-4">
         <Row className="p-4 d-flex align-items-center justify-content-center">
           <Col lg={4} md={4} sm={12}>
-          <Form className="d-flex">
+            <Form className="d-flex">
               <Form.Control
                 type="search"
                 placeholder="Pesquisar Bula"
@@ -90,7 +90,6 @@ export default function MedicineList() {
                   key={medicine.id}
                   id={medicine.id}
                   className="m-4 d-flex flex-column gap-4 justify-content-between" style={{ minHeight: '250px', maxHeight: '250px' }}>
-                  {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                   <Card.Body className="d-flex flex-column justify-content-between">
                     <Card.Title>{medicine.name}</Card.Title>
                     <Card.Text>
@@ -98,6 +97,9 @@ export default function MedicineList() {
                     </Card.Text>
                     <Card.Text>
                       {medicine.company}
+                    </Card.Text>
+                    <Card.Text>
+                      {medicine.active_principles[0].name}
                     </Card.Text>
                     <div>
                       <Button variant="danger">Ver Mais</Button>
