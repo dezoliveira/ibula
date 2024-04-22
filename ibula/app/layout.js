@@ -1,7 +1,7 @@
 import { Nunito } from "next/font/google"
 import "./globals.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import TopNavbar from "./components/Navbar"
+import Navbar from "@/app/components/elements/Navbar"
 
 const nunito= Nunito({ subsets: ["latin"] })
 
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={nunito.className} suppressHydrationWarning={true}>
-        <TopNavbar />
+        <Navbar />
         {children}
       </body>
     </html>

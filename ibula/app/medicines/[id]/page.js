@@ -3,8 +3,6 @@
 import Link from "next/link"
 //Font Awesome
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
-import { faUserDoctor } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 // hooks
 import { useEffect, useRef, useState } from "react"
