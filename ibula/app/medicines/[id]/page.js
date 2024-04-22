@@ -2,7 +2,7 @@
 
 // Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faClock, faIndustry, faFlask, faFilePdf } from '@fortawesome/free-solid-svg-icons'
+import { faClock, faIndustry, faFlask, faFilePdf, faPills } from '@fortawesome/free-solid-svg-icons'
 
 // bootsrap
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
@@ -75,7 +75,8 @@ export default function Medicine({ params }) {
             className="card m-4 gap-4"
           >
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-            <Card.Header className="text-bg-primary">
+            <Card.Header className="d-flex gap-2 align-items-center text-bg-primary">
+              <FontAwesomeIcon icon={faPills} />
               <Card.Title className="m-0">{medicine.name}</Card.Title>
             </Card.Header>
             <Card.Body className="d-flex flex-column justify-content-between">

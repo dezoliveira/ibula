@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Row, Form } from "react-bootstrap"
 
 // font awesoe
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faClock, faIndustry, faFlask } from '@fortawesome/free-solid-svg-icons'
+import { faClock, faIndustry, faFlask, faPills } from '@fortawesome/free-solid-svg-icons'
 
 // next
 import Link from "next/link"
@@ -104,7 +104,8 @@ export default function MedicineList() {
                   key={medicine.id}
                   id={medicine.id}
                   className="card m-4 gap-4">
-                  <Card.Header className="text-bg-primary">
+                  <Card.Header className="d-flex gap-2 align-items-center text-bg-primary">
+                    <FontAwesomeIcon icon={faPills} />
                     <Card.Title className="m-0">{medicine.name}</Card.Title>
                   </Card.Header>
                   <Card.Body className="d-flex flex-column justify-content-between">
