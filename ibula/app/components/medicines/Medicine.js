@@ -23,9 +23,21 @@ export default function Medicine({ data }) {
     e.preventDefault()
 
     setIsShowPDF(true)
+    
+    let label = e.target.name
+
+    if (label === 'download') {
+      setShowDownload(true)
+      setShowViewer(false)
+    }
+
+    if (label === 'viewer') {
+      setShowViewer(true)
+      setShowDownload(false)
+    }
   }
 
-  const formatDATA = (date) => {
+  const formDateTime = (date) => {
     if (date) {
       const newDate = new Date(date).toLocaleDateString()
       const newTime = new Date(date).toLocaleTimeString()
@@ -48,7 +60,7 @@ export default function Medicine({ data }) {
             <Card.Body className="d-flex flex-column justify-content-between">
               <Card.Text className="d-flex align-items-center gap-1">
                 <FontAwesomeIcon fontSize={16} icon={faClock} />
-                {formatDATA(medicine.published_at)}
+                {formDateTime(medicine.published_at)}
               </Card.Text>
               <Card.Text className="d-flex align-items-center gap-1">
                 <FontAwesomeIcon icon={faIndustry} />
