@@ -1,11 +1,17 @@
-import { Spinner } from "react-bootstrap";
+'use client'
+
+import Lottie from "lottie-react";
+import animationData from '@/app/lotties/loading.json'
 
 export default function Loading() {
   return(
-    <div className="full-wrapper d-flex justify-content-center">
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
+    <div className="full-wrapper d-flex justify-content-center align-items-center ">
+      <div>
+        <Lottie
+          style={{width: '200px', height: '200px'}}
+          animationData={animationData}
+          />
+      </div>
     </div>
   )
 }

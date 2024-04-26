@@ -1,5 +1,5 @@
 main {
-  background-color:#dee2e6;
+  background-color:#fff;
 }
 
 nav a {
@@ -12,7 +12,7 @@ nav a:hover {
 }
 
 .full-wrapper {
-  height: 100vh;
+  height: 80vh;
 }
 
 .logo {

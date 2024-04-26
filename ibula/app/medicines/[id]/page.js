@@ -6,6 +6,7 @@ import { Suspense } from "react"
 export const dinamycParams = false
 
 const getMedicine = async (id) => {
+  await new Promise(resolve => setTimeout(resolve, 3000))
   try {
     const response = await fetch(`http://localhost:3000/data/${id}`, {
       method: 'GET',

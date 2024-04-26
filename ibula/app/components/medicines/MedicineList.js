@@ -39,6 +39,7 @@ export default function MedicineList() {
   }, [])
 
   const getMedicines = async () => {
+    await new Promise(resolve => setTimeout(resolve, 3000))
     try {
       const response = await fetch('http://localhost:3000/data', {
         method: 'GET',
