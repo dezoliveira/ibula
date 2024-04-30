@@ -23,8 +23,6 @@ export default function TopNavbar() {
             <Link href="/" className='link'>Home</Link>
             <label className='text-white'>/</label>
             <Link href="/medicines" className='link'>Medicamentos</Link>
-            <label className='text-white'>/</label>
-            <Link href="/about" className='link'>Sobre</Link>
           </Nav>
         </Container>
       </Navbar>
