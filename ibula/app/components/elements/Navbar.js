@@ -22,7 +22,9 @@ export default function TopNavbar() {
           <Nav className="d-flex me-auto gap-2">
             <Link href="/" className='link'>Home</Link>
             <label className='text-white'>/</label>
-            <Link href="/" className='link'>About</Link>
+            <Link href="/medicines" className='link'>Medicamentos</Link>
+            <label className='text-white'>/</label>
+            <Link href="/about" className='link'>Sobre</Link>
           </Nav>
         </Container>
       </Navbar>

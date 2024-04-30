@@ -1,4 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { pdf: { remotePatterns: [ { protocol: "http", hostname: "localhost", }, ], }, }; 
+const nextConfig = {}; 
 
 export default nextConfig;

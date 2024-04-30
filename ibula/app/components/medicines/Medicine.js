@@ -8,7 +8,7 @@ import { faClock, faIndustry, faFlask, faFilePdf, faPills } from '@fortawesome/f
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
 
 // react hooks
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 // next
 import Link from "next/link"

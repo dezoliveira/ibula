@@ -32,7 +32,7 @@ const getMedicine = async (id) => {
   }
 }
 
-export default async function Medicines({ params }) {
+export default async function MedicinePage({ params }) {
   const medicine = await getMedicine(params.id)
 
   return (

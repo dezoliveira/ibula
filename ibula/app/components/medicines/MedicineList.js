@@ -1,3 +1,5 @@
+'use client'
+
 // bootsrap
 import { Button, Card, Col, Container, Row, Form } from "react-bootstrap"
 
