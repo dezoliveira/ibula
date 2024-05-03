@@ -46,9 +46,7 @@ export default function Medicine({ data }) {
   }
 
   return (
-    <Container className="p-4 full-wrapper">
-      <Row className="d-flex align-items-center justify-content-center ">
-        <Col lg={6} md={6} sd={6}>
+      <>
           <Card
             id={medicine.id}
             className="medicine-card m-4 gap-4"
@@ -133,8 +131,6 @@ export default function Medicine({ data }) {
               </Card.Body>
             </Card>
           )}
-        </Col>
-      </Row>
-    </Container>
+  </>
   )
 }

@@ -18,8 +18,8 @@ import { useEffect, useRef, useState } from "react"
 import Loading from "@/app/components/elements/Loading"
 import Pagination from "@/app/components/elements/Pagination"
 
-export default function MedicineList() {
-  const [medicines, setMedicines] = useState([])
+export default function MedicineList({data}) {
+  const [medicines, setMedicines] = useState(data)
   const [searchMedicine, setSearchMedicine] = useState("")
   const [filteredMedicines, setFilteredMedicine] = useState(medicines)
 
@@ -35,28 +35,6 @@ export default function MedicineList() {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-
-  useEffect(() => {
-    getMedicines()
-  }, [])
-
-  const getMedicines = async () => {
-    await new Promise(resolve => setTimeout(resolve, 3000))
-    try {
-      const response = await fetch('http://localhost:3000/data', {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json",
-        }
-      })
-      
-      const data = await response.json()
-      setMedicines(data)
-      setFilteredMedicine(data)
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
 
   const handleInputChange = (e) => {
     const searchMedicine = e.target.value
@@ -106,7 +84,8 @@ export default function MedicineList() {
                 <Card
                   key={medicine.id}
                   id={medicine.id}
-                  className="medicine-card m-4 gap-4">
+                  className="medicine-card m-4 gap-4"
+                >
                   <Card.Header className="d-flex gap-2 align-items-center text-bg-primary">
                     <FontAwesomeIcon icon={faPills} />
                     <Card.Title className="m-0">{medicine.name}</Card.Title>
