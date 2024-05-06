@@ -1,31 +1,36 @@
-[![](https://dotlib.com/theme/img/logos/logo.png)](https://www.dotlib.com)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# Descrição da vaga de Desenvolvedor Frontend Jr.
+## Getting Started
 
-Buscamos profissionais que sejam apaixonados por desenvolvimento, inovação e novas tecnologias, para integrar nosso time em projetos baseados em Laravel, Node.js, React e React Native.
+First, run the development server:
 
-[Oportunidades Dotlib](https://github.com/Dotlib-BR/oportunidades)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Requisitos
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Obrigatórios:
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-- Experiência em desenvolvimento de sites em React
-- Consumo de APIs RESTful
-- SASS e Flexbox
-- API Contexts e Hooks
-- Controle de versões (GIT)
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-### Bônus:
+## Learn More
 
-- Conhecimentos em Docker
-- Conhecimentos em Typescript
-- Conhecimentos em Node.js
-- Conhecimentos em testes automatizados com Cypress
-- Experiência em metodologias ágeis (Scrum/Kanban)
+To learn more about Next.js, take a look at the following resources:
 
-## Como se candidatar
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Para se candidatar, basta acessar a url e realizar o teste para a vaga:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-- [Teste para Desenvolvedor Frontend Jr.](teste-frontend.md)
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
