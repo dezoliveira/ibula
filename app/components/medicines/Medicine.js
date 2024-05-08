@@ -19,6 +19,8 @@ export default function Medicine({ data }) {
   const [showViewer, setShowViewer] = useState(false)
   const [showDownload, setShowDownload] = useState(false)
 
+  console.log(medicine)
+
   const handleShowPDF = (e) => {
     e.preventDefault()
 

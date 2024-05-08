@@ -3,11 +3,10 @@ import { database } from "../firebase/config"
 import { get, ref } from "firebase/database"
 
 export async function loadMedicines() {
-
   const medicinesRef = ref(database, 'medicines') 
 
   try{
-    await new Promise(resolve => setTimeout(resolve, 3000))
+    // await new Promise(resolve => setTimeout(resolve, 3000))
 
     const snapshot = await get(medicinesRef, {
       next: {
@@ -21,7 +20,12 @@ export async function loadMedicines() {
         ...data
       }))
 
+      console.log(medicinesArray)
+
       return medicinesArray
+
+    } else {
+      notFound()
     }
     
   } catch(err){

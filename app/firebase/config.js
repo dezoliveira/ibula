@@ -14,4 +14,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const database = getDatabase(app)
+const AppSettings = {
+  dataBaseURL:
+    "https://ibula-2d5f3-default-rtdb.firebaseio.com",
+};
+
+export const database = getDatabase(app, AppSettings.dataBaseURL)
