@@ -17,7 +17,7 @@ export async function loadMedicine(id) {
     })
 
     if (snapshot.exists()) {
-      const medicine = snapshot.data()
+      const medicine = snapshot.val()
 
       console.log(medicine)
 
