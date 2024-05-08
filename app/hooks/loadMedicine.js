@@ -19,10 +19,10 @@ export async function loadMedicine(id) {
     if (snapshot.exists()) {
       const medicine = snapshot.val()
 
-      console.log(medicine)
-
       return medicine
 
+    } else {
+      notFound()
     }
 
   } catch (error) {
